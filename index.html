@@ -10,21 +10,20 @@
 <body>
 
     <div id="app">
-        <input v-on:blur="exibirNome('Meu nome é ', $event)">
-        <p>{{ nome }}</p>
+        <p v-on:click="onClick('p', $event)">
+            Curso de VueJS
+            <button v-on:click="onClick('button', $event)">Clique</button>
+
+        </p>
     </div>
 
     <script type="text/javascript">
         new Vue ({
             el: '#app',
-            data: {
-                nome: '',
-            },
-            methods: {
-                exibirNome: function(texto, event) {
-                    this.nome = texto + event.target.value;
+            methods:{
+                onClick: function(elementoAlvo, event){
+                    console.log(event.type, ':', elementoAlvo);
                 }
-                
             }
         });
     </script>
