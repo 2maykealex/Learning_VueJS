@@ -22,6 +22,7 @@
             el: '#app',
             methods:{
                 onClick: function(elementoAlvo, event){
+                    event.stopPropagation();
                     console.log(event.type, ':', elementoAlvo);
                 }
             }
