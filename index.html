@@ -10,8 +10,9 @@
 <body>
 
     <div id="app">
-        <p>Curso: {{ curso }} | {{ nomeDoInstrutor() }} </p>
+        <p>Curso: {{ curso }}</p>
         <a v-bind:href="docs">VueJS</a>
+        <p>Instrutor: <span v-text="instrutor"></span></p>
     </div>
 
     <script type="text/javascript">
@@ -20,11 +21,10 @@
             data: {
                 curso: 'VueJS',
                 docs: 'https://vuejs.org',
+                instrutor: 'Mayke Alex',
             },
             methods: {
-                nomeDoInstrutor: function() {
-                    return this.instrutor;
-                }
+                
             }
         });
     </script>
