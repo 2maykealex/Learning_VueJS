@@ -12,7 +12,9 @@
     <div id="app">
         <input v-on:keyup="onKey" placeholder="Qualquer tecla">
         <br>
-        <input v-on:keyup.enter="onKey" placeholder="Qualquer tecla">
+        <input v-on:keyup.enter="onKey" placeholder="Tecla ENTER">
+        <br>
+        <input v-on:keyup.enter.esc="onKey" placeholder="Tecla ENTER ou ESC">
     </div>
 
     <script type="text/javascript">
