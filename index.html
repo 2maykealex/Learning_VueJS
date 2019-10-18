@@ -10,21 +10,24 @@
 <body>
 
     <div id="app">
-        <button v-on:click="onCLick" >Botão esquerdo</button>
+        <a v-bind:href="docs">VueJS</a>
         <br>
-        <button v-on:click.middle="onCLick" >Botão do meio</button>
+        <button v-on:click="onClick">Clique</button>
+        <hr>
+        <a :href="docs">VueJS</a>
         <br>
-        <button v-on:click.right="onCLick" >Botão do direito</button>
-        <br>
-        <button v-on:click.right.prevent="onCLick" >sem menu de contexto</button>
+        <button @click="onClick">Clique</button>
     </div>
 
     <script type="text/javascript">
         new Vue ({
             el: '#app',
+            data: {
+                docs: 'https://vuejs.org',
+            },
             methods: {
-                onCLick: function (event) {
-                    console.log("Botão " + event.button +  " pressionado!");
+                onClick: function (event) {
+                    console.log("Evento ", event.type);
                 }
             },
         });
