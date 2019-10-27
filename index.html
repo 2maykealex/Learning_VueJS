@@ -11,33 +11,45 @@
 
     <div id="app">
         <p>Nome: {{ nomeCompleto }}</p>
-        <button @click="alterarNomes">Alterar Nomes</button>
+        <button @click="alterarNome">Alterar Nome</button>
+        <br>
+        <p>Tempo para alterar o nome: {{ count }}</p>
     </div>
 
     <script type="text/javascript">
         new Vue ({
             el: '#app',
             data: {
-                primeiroNome: 'Mayke',
-                ultimoNome: 'Plaça',
+                nomeCompleto: 'Mayke Plaça',
+                count: 0,
             },
-            computed: {
-                nomeCompleto: function() {
-                    return this.primeiroNome + ' ' + this.ultimoNome;
-                }
-            },
-            // watch: {
-            //     primeiroNome: function (novoPrimeiroNome, antigoPrimeiroNome) {
-            //         this.nomeCompleto = novoPrimeiroNome + ' ' + this.ultimoNome;
-            //     },
-            //     ultimoNome: function (novoUltimoNome, antigoUltimoNome) {
-            //         this.nomeCompleto = this.novoUltimoNome + ' ' + this.novoUltimoNome;
+            // computed: {
+            //     contador: function () {
+            //         console.log(this.count);
+            //         this.count++;
             //     }
             // },
+            watch: {
+                nomeCompleto: function (novoNomeCompleto, antigoNomeCompleto) {
+                    var vm = this;
+                    setTimeout(function() {
+                        vm.nomeCompleto = 'nome resetado!';
+                    }, 5000);
+                },
+                count: function (nCount, aCount) {
+                    var vm = this;
+                    if (vm.count < 5) {
+                        setTimeout(function(){
+                            console.log(vm.count);
+                            vm.count++;
+                        }, 1000);
+                    }
+                }
+            },
             methods: {
-                alterarNomes: function(event) {
-                    this.primeiroNome = 'Alex';
-                    this.ultimoNome = 'Plaça';
+                alterarNome: function(event) {
+                    this.nomeCompleto = 'Plaça Mayke';
+                    this.count++;
                 }
             },
         });
