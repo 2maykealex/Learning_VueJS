@@ -10,54 +10,17 @@
 <body>
 
     <div id="app">
-        <p>Nome: <span v-html="nomeCompleto"></span></p>
-        <!-- <p>Nome: {{ nomeCompleto }}</p> -->
-        <button @click="alterarNome">Alterar Nome</button>
-        <br>
-        <!-- <p v-html="count"></p> -->
-        <p>Tempo para alterar o nome:  {{ count }}</p>
+        <input :value="nome" @input="nome = $event.target.value">
+        <input v-model="nome">
+        <p>{{ nome }}</p>
     </div>
 
     <script type="text/javascript">
         new Vue ({
             el: '#app',
             data: {
-                nomeCompleto: 'Mayke Plaça',
-                count: 0,
-            },
-            computed: {
-                contador: {
-                    get: function() {
-                        return this.count;
-                    },
-                    set: function(nCount) {
-                        this.count++;
-                        console.log(this.count);
-                    }
-                }
-            },
-            watch: {
-                nomeCompleto: function (novoNomeCompleto, antigoNomeCompleto) {
-                    var vm = this;
-                    setTimeout(function() {
-                        vm.nomeCompleto ='<strong style="color:red;">NOME RESETADO!</strong>';
-                    }, 5000);
-                },
-                count: function (nCount, aCount) {
-                    var vm = this;
-                    if (vm.contador < 5) {
-                        setTimeout(function(){
-                            vm.contador=1;
-                        }, 1000);
-                    }
-                }
-            },
-            methods: {
-                alterarNome: function(event) {
-                    this.nomeCompleto = 'Plaça Mayke';
-                    this.contador = 1;
-                }
-            },
+                nome: 'Mayke'
+            }
         });
     </script>
 </body>
