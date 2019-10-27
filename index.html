@@ -10,10 +10,12 @@
 <body>
 
     <div id="app">
-        <p>Nome: {{ nomeCompleto }}</p>
+        <p>Nome: <span v-html="nomeCompleto"></span></p>
+        <!-- <p>Nome: {{ nomeCompleto }}</p> -->
         <button @click="alterarNome">Alterar Nome</button>
         <br>
-        <p>Tempo para alterar o nome: {{ count }}</p>
+        <!-- <p v-html="count"></p> -->
+        <p>Tempo para alterar o nome:  {{ count }}</p>
     </div>
 
     <script type="text/javascript">
@@ -23,25 +25,29 @@
                 nomeCompleto: 'Mayke Plaça',
                 count: 0,
             },
-            // computed: {
-            //     contador: function () {
-            //         console.log(this.count);
-            //         this.count++;
-            //     }
-            // },
+            computed: {
+                contador: {
+                    get: function() {
+                        return this.count;
+                    },
+                    set: function(nCount) {
+                        this.count++;
+                        console.log(this.count);
+                    }
+                }
+            },
             watch: {
                 nomeCompleto: function (novoNomeCompleto, antigoNomeCompleto) {
                     var vm = this;
                     setTimeout(function() {
-                        vm.nomeCompleto = 'nome resetado!';
+                        vm.nomeCompleto ='<strong style="color:red;">NOME RESETADO!</strong>';
                     }, 5000);
                 },
                 count: function (nCount, aCount) {
                     var vm = this;
-                    if (vm.count < 5) {
+                    if (vm.contador < 5) {
                         setTimeout(function(){
-                            console.log(vm.count);
-                            vm.count++;
+                            vm.contador=1;
                         }, 1000);
                     }
                 }
@@ -49,7 +55,7 @@
             methods: {
                 alterarNome: function(event) {
                     this.nomeCompleto = 'Plaça Mayke';
-                    this.count++;
+                    this.contador = 1;
                 }
             },
         });
