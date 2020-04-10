@@ -18,23 +18,39 @@
         .coral {
             background-color: lightcoral;
         }
+        .verde {
+            background-color: lightgreen;
+        }
+        .azul {
+            background-color: lightblue;
+        }
+        .circulo {
+            border-radius: 100%;
+        }
 
     </style>
 </head>
 <body>
 
     <div id="app">
-        <div class="caixa"
-             :class="{ coral: aplicarClasse }"
-             @click="aplicarClasse = !aplicarClasse">
+        <div 
+            class="caixa"
+            :class="{ coral: aplicarClasse }"
+            @click="aplicarClasse = !aplicarClasse">
         </div>
+        <div 
+            class="caixa"
+            :class="nomeDaClasse">
+        </div>
+        <input v-model="nomeDaClasse">
     </div>
 
     <script type="text/javascript">
         new Vue ({
             el: '#app',
             data: {
-                aplicarClasse: false
+                aplicarClasse: false,
+                nomeDaClasse: '',
             },
             
         });
