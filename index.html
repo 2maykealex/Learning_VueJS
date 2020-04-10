@@ -47,6 +47,10 @@
             :class="classesCSS"
             @click="aplicarClasse = !aplicarClasse">
         </div>
+        <div 
+            class="caixa"
+            :class="['circulo', nomeDaClasse, {verde: aplicarClasse}]">
+        </div>
         <input v-model="nomeDaClasse">
     </div>
 
