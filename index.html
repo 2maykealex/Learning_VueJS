@@ -11,23 +11,20 @@
 <body>
 
     <div id="app">
-        <p v-if="mostrar">Olá VueJS</p>
-        <p v-else>Até Logo VueJS</p>
-        <button @click="Alternar">Alternar</button>
+        <p v-if="nota==='A'">Parabéns! Você tirou "A"</p>
+        <p v-else-if="nota==='B'">Você tirou "B"</p>
+        <p v-else-if="nota==='C'">Voce tem que melhorar. Nota "C"</p>
+        <p v-else>Nota ainda não publicada</p>
+        <br>
+        <input v-model="nota" placeholder="Nota">
     </div>
 
     <script type="text/javascript">
         new Vue ({
             el: '#app',
             data: {
-                mostrar: true,
+                nota: '',
             },
-            methods: {
-                Alternar: function () {
-                    this.mostrar = !this.mostrar;
-                }
-            }
-
         });
     </script>
 </body>
