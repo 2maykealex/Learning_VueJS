@@ -19,11 +19,8 @@
     <div id="app">
         <h1>Produtos</h1>
         <ul>
-            <li v-for="produto in produtos">
-                {{ texto }}: {{ produto }}
-            </li>
-            <li v-for="produto of produtos">
-                {{ texto }}: {{ produto }}
+            <li v-for="(produto, id) in produtos">
+                {{ id+1 }}: {{ produto }}
             </li>
         </ul>
     </div>
