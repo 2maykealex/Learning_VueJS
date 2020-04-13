@@ -10,23 +10,24 @@
 </head>
 <body>
 
+    <!-- v-if = Remove o elemento da renderização -->
+    
+    <!-- v-show = Não remove o elemento - altera a propriedade display do CSS -->
+    <!-- não trabalha com v-else ou v-else-if -->
+    <!-- não trabalha com elemento 'template' -->
+
     <div id="app">
-        <button @click="login = !login">Toggle</button>
-        <template v-if="login">
-            <label>Login:</label>
-            <input placeholder ="Login" key="campo-login">
-        </template>
-        <template v-else>
-            <label>E-mail:</label>
-            <input placeholder="E-mail" key="campo-email">
-        </template>
+        <button @click="mostrar = !mostrar">Toggle</button>
+        <p>Diretiva v-show "{{ mostrar }}"</p>
+        <p v-show="mostrar">Diretiva v-show "{{ mostrar }}"</p>
+        
     </div>
 
     <script type="text/javascript">
         new Vue ({
             el: '#app',
             data: {
-                login: true,
+                mostrar: true,
             },
         });
     </script>
