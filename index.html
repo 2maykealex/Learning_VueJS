@@ -17,18 +17,27 @@
     <!-- não trabalha com elemento 'template' -->
 
     <div id="app">
-        <button @click="mostrar = !mostrar">Toggle</button>
-        <p v-if="mostrar">Diretiva v-if "{{ mostrar }}: <span> {{texto}} </span></p>
-        <p v-show="mostrar">Diretiva v-show "{{ mostrar }}: <span> {{texto}} </span></p>
-        <input v-model="texto">        
+        <h1>Produtos</h1>
+        <ul>
+            <li v-for="produto in produtos">
+                {{ texto }}: {{ produto }}
+            </li>
+            <li v-for="produto of produtos">
+                {{ texto }}: {{ produto }}
+            </li>
+        </ul>
     </div>
 
     <script type="text/javascript">
         new Vue ({
             el: '#app',
             data: {
-                mostrar: true,
-                texto: 'Olá VueJS',
+                texto: 'Produto',
+                produtos: [
+                    'Monitor',
+                    'Teclado',
+                    'Mouse',
+                ]
             },
         });
     </script>
