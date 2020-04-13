@@ -19,8 +19,14 @@
     <div id="app">
         <h1>Produto</h1>
         <ul>
-            <li v-for="(valor, indice) in 30">{{indice}}: {{valor}}</li>
+            <li v-for="(produto) in produtos">{{produto.nome}}</li>
         </ul>
+
+        <ul>
+            <li v-for="(produto) in produtos" :key="produto.id">{{produto.nome}}</li>
+        </ul>
+        <button @click="produtos.reverse()">Inverter Lista</button>
+        <button @click="addProduto">Add Produto</button>
 
     </div>
 
@@ -28,13 +34,19 @@
         new Vue ({
             el: '#app',
             data: {
-                produto: {
-                    id: 1,
-                    nome: 'Teclado',
-                    marca: 'Dell',
-                    valor: 100,
-                }
+                produtos: [
+                    {id: 1, nome: 'Monitor'},
+                    {id: 2, nome: 'Teclado'},
+                    {id: 3, nome: 'Mouse'},
+                    {id: 4, nome: 'Processador'}
+                ]                
             },
+            methods: {
+                addProduto: function () {
+                    var id = this.produtos.length + 1;
+                    this.produtos.push({id:id, nome: 'Produto ' + id})
+                }
+            }
         });
     </script>
 </body>
