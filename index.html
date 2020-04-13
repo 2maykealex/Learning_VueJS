@@ -11,19 +11,22 @@
 <body>
 
     <div id="app">
-        <p v-if="nota==='A'">Parabéns! Você tirou "A"</p>
-        <p v-else-if="nota==='B'">Você tirou "B"</p>
-        <p v-else-if="nota==='C'">Voce tem que melhorar. Nota "C"</p>
-        <p v-else>Nota ainda não publicada</p>
-        <br>
-        <input v-model="nota" placeholder="Nota">
+        <button @click="login = !login">Toggle</button>
+        <template v-if="login">
+            <label>Login:</label>
+            <input placeholder ="Login" key="campo-login">
+        </template>
+        <template v-else>
+            <label>E-mail:</label>
+            <input placeholder="E-mail" key="campo-email">
+        </template>
     </div>
 
     <script type="text/javascript">
         new Vue ({
             el: '#app',
             data: {
-                nota: '',
+                login: true,
             },
         });
     </script>
