@@ -18,9 +18,9 @@
 
     <div id="app">
         <button @click="mostrar = !mostrar">Toggle</button>
-        <p>Diretiva v-show "{{ mostrar }}"</p>
-        <p v-show="mostrar">Diretiva v-show "{{ mostrar }}"</p>
-        
+        <p v-if="mostrar">Diretiva v-if "{{ mostrar }}: <span> {{texto}} </span></p>
+        <p v-show="mostrar">Diretiva v-show "{{ mostrar }}: <span> {{texto}} </span></p>
+        <input v-model="texto">        
     </div>
 
     <script type="text/javascript">
@@ -28,6 +28,7 @@
             el: '#app',
             data: {
                 mostrar: true,
+                texto: 'Olá VueJS',
             },
         });
     </script>
