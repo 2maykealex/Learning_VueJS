@@ -17,16 +17,16 @@
     <!-- não trabalha com elemento 'template' -->
 
     <div id="app">
-        <h1>Produto</h1>
+        <h1>Tarefas</h1>
         <ul>
-            <li v-for="(produto) in produtos">{{produto.nome}}</li>
+            <li v-for="(tarefa) in tarefas" :key="tarefa.id" v-if="!tarefa.completa">{{tarefa.titulo}}</li>
         </ul>
-
-        <ul>
-            <li v-for="(produto) in produtos" :key="produto.id">{{produto.nome}}</li>
+        
+        <h1>Tarefas a fazer</h1>
+        <ul v-if="tarefasIncompletas.length">
+            <li v-for="(tarefa) in tarefasIncompletas" :key="tarefa.id">{{tarefa.titulo}}</li>
         </ul>
-        <button @click="produtos.reverse()">Inverter Lista</button>
-        <button @click="addProduto">Add Produto</button>
+        <p v-else>Não existem tarefas a executar!</p>
 
     </div>
 
@@ -34,17 +34,18 @@
         new Vue ({
             el: '#app',
             data: {
-                produtos: [
-                    {id: 1, nome: 'Monitor'},
-                    {id: 2, nome: 'Teclado'},
-                    {id: 3, nome: 'Mouse'},
-                    {id: 4, nome: 'Processador'}
+                tarefas: [
+                    {id: 1, titulo: 'Aprender JavaScript', completa: true},
+                    {id: 2, titulo: 'Aprender VueJS', completa: true},
+                    {id: 3, titulo: 'Aprender Vuex', completa: true},
+                    {id: 4, titulo: 'Aprender VueRouter', completa: true}
                 ]                
             },
-            methods: {
-                addProduto: function () {
-                    var id = this.produtos.length + 1;
-                    this.produtos.push({id:id, nome: 'Produto ' + id})
+            computed: {
+                tarefasIncompletas: function () {
+                    return this.tarefas.filter(function (tarefa) {
+                        return !tarefa.completa;
+                    })
                 }
             }
         });
