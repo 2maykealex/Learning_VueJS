@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VueJS - Guia completo</title>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Instância Vue</h1>
+        <p>{{titulo}}</p>
+        <h3>Propriedades dinâmicas:</h3>
+        <p>{{ novaPropriedade }}</p>
+        <p>{{ usuario }}</p>
+
+    </div>
+
+    <script type="text/javascript">
+    
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                titulo: 'Curso de Vue',
+                usuario: {}
+            },
+        });
+
+        // vm.novaPropriedade = "Nova Propriedade!";  // Não reativo
+        console.log(vm);
+        setTimeout(function() {
+            vm.novaPropriedade = 'Nova Propriedade'; // só será exibido o valor se houver outra renderização da página.
+            vm.$set(vm.usuario, 'nome', 'Mayke');
+            setTimeout(function() {
+                vm.novaPropriedade = 'Nova Propriedade alterada';
+            }, 2000);
+        }, 2000);
+
+    </script>
+    
+</body>
+</html>
