@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VueJS - Guia completo</title>
+    <script type="text/javascript" src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Instância Vue</h1>
+        <button @click="mostrar = !mostrar">Toggle</button>
+        <p v-if="mostrar">{{titulo}}</p>
+
+    </div>
+
+    <script type="text/javascript">
+
+        var data = {
+            titulo: 'Curso de Vue',
+            mostrar: true
+        };
+    
+        var vm = new Vue({
+            el: '#app',
+            data: data,
+        });
+        console.log(vm);
+        console.log(vm.$el === document.getElementById('app'));
+        console.log(vm.$data === data);
+
+        setTimeout(() => {
+            data.titulo = "VueJS";
+        }, 2000);
+
+
+    </script>
+    
+</body>
+</html>
